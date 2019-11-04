@@ -28,17 +28,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(40, 40, 40));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,6 +54,13 @@ public class MainWindow extends javax.swing.JFrame {
         
         if(keyPressed == evt.VK_ESCAPE){
             System.exit(0);
+        }
+        
+        if(keyPressed == evt.VK_ENTER){
+            for (int i =0; i<4; i++){
+                new BottomBlocks(jPanel1, i);
+            }
+            pack();
         }
     }//GEN-LAST:event_formKeyPressed
 
