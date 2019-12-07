@@ -57,9 +57,11 @@ public class MainWindow extends javax.swing.JFrame {
         }
         
         if(keyPressed == evt.VK_ENTER){
-            for (int i =0; i<4; i++){
+            int i;
+            for (i =0; i<4; i++){
                 new BottomBlocks(jPanel1, i);
             }
+            new FloatingBlock(jPanel1, i);
             pack();
         }
     }//GEN-LAST:event_formKeyPressed
