@@ -1,13 +1,18 @@
 package binarybuster;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class MainWindow extends javax.swing.JFrame {
+public class MainWindow extends JFrame{
     
     private BottomBlocks bb[];
     private FloatingBlock fb;
+    public GameTimer tm;
+    public Timer timer;
     
     public MainWindow() {
         initComponents();
+        
+        endBtn.setVisible(false);
     }
 
     /**
@@ -20,6 +25,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        endBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -32,6 +38,14 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(40, 40, 40));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        endBtn.setText("game over");
+        endBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                endBtnMouseClicked(evt);
+            }
+        });
+        jPanel1.add(endBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 200, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,6 +66,25 @@ public class MainWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void createGameplay(){
+        int i;
+        //timer = new javax.swing.Timer(3, this);
+        //timer.start();
+        tm = new GameTimer(jPanel1, endBtn);
+    }
+    
+    private void deleteGameplay(){
+        endBtn.setVisible(false);
+        
+        jPanel1.remove(fb);
+        jPanel1.remove(tm);
+        
+        for(int i = 0; i < 4; i++)
+            jPanel1.remove(bb[i]);
+        
+        jPanel1.repaint();
+    }
+    
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         int keyPressed = evt.getKeyCode();
         bb = new BottomBlocks[4];
@@ -66,14 +99,21 @@ public class MainWindow extends javax.swing.JFrame {
                 bb[i-1] = new BottomBlocks(jPanel1, i);
             }
             fb = new FloatingBlock(jPanel1, i);
+            this.createGameplay();
+            
             pack();
         }
         
      
     }//GEN-LAST:event_formKeyPressed
 
+    private void endBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_endBtnMouseClicked
+        deleteGameplay();
+    }//GEN-LAST:event_endBtnMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton endBtn;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

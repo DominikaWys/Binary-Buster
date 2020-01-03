@@ -33,7 +33,7 @@ public class BottomBlocks extends AbstractBlocks{
         
         this.setterText(pos);
         jp.add(this, new AbsoluteConstraints(30 + (pos-1)*320, 590, 260, 130)); 
-        jp.setComponentZOrder(this, 1);
+        //jp.setComponentZOrder(this, 1);
         jp.repaint();
     }
     
