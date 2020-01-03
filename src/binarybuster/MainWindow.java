@@ -2,7 +2,10 @@ package binarybuster;
 import javax.swing.*;
 
 public class MainWindow extends javax.swing.JFrame {
-
+    
+    private BottomBlocks bb[];
+    private FloatingBlock fb;
+    
     public MainWindow() {
         initComponents();
     }
@@ -51,19 +54,22 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         int keyPressed = evt.getKeyCode();
-        
+        bb = new BottomBlocks[4];
+                
         if(keyPressed == evt.VK_ESCAPE){
             System.exit(0);
         }
         
         if(keyPressed == evt.VK_ENTER){
             int i;
-            for (i =0; i<4; i++){
-                new BottomBlocks(jPanel1, i);
+            for (i =1; i<=4; i++){
+                bb[i-1] = new BottomBlocks(jPanel1, i);
             }
-            new FloatingBlock(jPanel1, i);
+            fb = new FloatingBlock(jPanel1, i);
             pack();
         }
+        
+     
     }//GEN-LAST:event_formKeyPressed
 
 
