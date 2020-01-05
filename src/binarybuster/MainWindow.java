@@ -34,7 +34,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     private BottomBlocks bb[];
     
     /** obiektów do wyświetlania liczby żyć */
-    public LifesGUI lifes;
+    public LivesGUI lives;
     
     /** obiektów do wyświetlania aktualnego poziomu rozgrywki */
     public LevelGUI level;        
@@ -67,8 +67,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         
         score.setOpaque(false);
         score.setBorder(null);
-        
-        
+                
         score.setBackground(null);
         score.setForeground(new java.awt.Color(255, 255, 255));
         score.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -218,7 +217,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     public void actionPerformed(ActionEvent evt){        
         
         // jeśli wszystkie warunki są spełnione do kontynuowania rozgrywki
-        if(gameFlag && tm.canCount && lifes.currentLifes > 0){
+        if(gameFlag && tm.canCount && lives.currentLives > 0){
             fb.canMove = true;
         }
         else{
@@ -281,7 +280,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
    
     /**
      * Obsługa wyjścia z aplikacji
-     * @param evt
+     * @param evt brak obsługi
      */
     private void exitBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMousePressed
         System.exit(0);
@@ -289,7 +288,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Przycisk rozpoczęcia rozgrywki
-     * @param evt
+     * @param evt brak obsługi
      */
     private void startBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startBtnMousePressed
         if(!gameFlag && !endBtn.isVisible())
@@ -298,7 +297,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
     
     /**
      * Obsługa przycisku występującego po zakończonej rozgryce
-     * @param evt
+     * @param evt brak obsługi
      */
     private void endBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_endBtnMousePressed
         gameFlag = false;
@@ -308,7 +307,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Metoda ustawia widoczność przycisków
-     * @param evt 
+     * @param evt brak obsługi
      */
     private void helpBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnMousePressed
         help.setVisible(true);
@@ -323,7 +322,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Metoda ustawia widoczność przycisków
-     * @param evt
+     * @param evt brak obsługi
      */
     private void backBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMousePressed
         help.setVisible(false);
@@ -347,9 +346,9 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         tm = new GameTimer(jPanel1, endBtn);
         setBtnVisibility(false);
 
-        lifes = new LifesGUI(jPanel1, endBtn);        
+        lives = new LivesGUI(jPanel1, endBtn);        
         bb = new BottomBlocks[4];
-        fb = new FloatingBlock(jPanel1, lifes, level);
+        fb = new FloatingBlock(jPanel1, lives, level);
 
         for(i = 1; i <= 4; i++){
             bb[i-1] = new BottomBlocks(jPanel1, i);
@@ -372,7 +371,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
         for(i = 0; i < 4; i++)
             jPanel1.remove(bb[i]);           
                 
-        jPanel1.remove(lifes);
+        jPanel1.remove(lives);
         jPanel1.remove(level);
         jPanel1.remove(fb);
         jPanel1.remove(tm);
@@ -416,7 +415,7 @@ public class MainWindow extends javax.swing.JFrame implements ActionListener{
             e.printStackTrace();
         }
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel background;

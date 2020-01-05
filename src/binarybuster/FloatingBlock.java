@@ -41,7 +41,7 @@ public class FloatingBlock extends Blocks implements ActionListener{
     public Timer timer;
     
     /** kopia obiektu wyświetlającego liczbę żyć */
-    public LifesGUI lifesCopy;
+    public LivesGUI livesCopy;
     
     /** kopia obiektu wyświetlającego numer poziomu*/
     public LevelGUI levelCopy;
@@ -49,14 +49,14 @@ public class FloatingBlock extends Blocks implements ActionListener{
     /**
     * Konstruktor poruszającej się platformy
     * @param jp przesłany JPanel z klasy MainWindow w celu dodania do panelu bloczków        
-    * @param lifes przesłany JLabel w celu aktualizaji jego grafiki w zależności od błędnej odpowiedzi
+    * @param lives przesłany JLabel w celu aktualizaji jego grafiki w zależności od błędnej odpowiedzi
     * @param level przesłany JLabel w celu aktualizaji numeru poziomu rozgrywki     
     */
-    FloatingBlock(JPanel jp, LifesGUI lifes, LevelGUI level){
+    FloatingBlock(JPanel jp, LivesGUI lives, LevelGUI level){
         super(jp);
         
         levelCopy = level;
-        lifesCopy = lifes;
+        livesCopy = lives;
         
         this.setIcon(new ImageIcon(getClass().getResource("img/platform.png")));
         this.setFont(myFont);
@@ -117,28 +117,28 @@ public class FloatingBlock extends Blocks implements ActionListener{
             if(isCorrect(1))                
                 newLevel = true;
             else                
-                lifesCopy.updateIcon();
+                livesCopy.updateIcon();
         }
         else if(xCenter >= 350 && xCenter <= 610){                        
             if(isCorrect(2))
                 newLevel = true;
             else
-                lifesCopy.updateIcon();
+                livesCopy.updateIcon();
         }
         else if(xCenter >= 670 && xCenter <= 930){
             if(isCorrect(3))
                 newLevel = true;
             else
-                lifesCopy.updateIcon();
+                livesCopy.updateIcon();
         }
         else if(xCenter >= 990 && xCenter <= 1250){
             if(isCorrect(4))
                 newLevel = true;
             else
-                lifesCopy.updateIcon();
+                livesCopy.updateIcon();
         }
         else{
-            lifesCopy.updateIcon();
+            livesCopy.updateIcon();
         }            
         
         resetParameters();

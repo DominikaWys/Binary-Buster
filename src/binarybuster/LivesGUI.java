@@ -7,10 +7,10 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
  * Klasa opisująca i tworząca JLabela z grafiką przedstawiającą aktualną liczbą żyć
  * @author Dominika Wysocka
  */
-public class LifesGUI extends JLabel{
+public class LivesGUI extends JLabel{
     
     /** pole przechowujące aktualną liczbę żyć*/
-    public int currentLifes = 3;
+    public int currentLives = 3;
     
     /** kopia przycisku pojawiającego się po skończonym czasie */
     private JButton btnCopy;
@@ -20,7 +20,7 @@ public class LifesGUI extends JLabel{
      * @param jp JPanel przesłany z klasy MainWindow do którego dodamy grafikę z aktualnym stanem żyć
      * @param btn JButton przesłany z klasy MainWindow; pojawia się w momencie, kiedy gracz utraci wszystkie życia
      */
-    public LifesGUI(JPanel jp, JButton btn){
+    public LivesGUI(JPanel jp, JButton btn){
         super();
         
         btnCopy = btn;
@@ -37,18 +37,18 @@ public class LifesGUI extends JLabel{
      * metoda ustawia odpowiednią grafikę w zależności o liczby żyć     
      */
     public void updateIcon(){
-        currentLifes--;
+        currentLives--;
         
-        if(currentLifes == 3){
+        if(currentLives == 3){
             this.setIcon(new ImageIcon(getClass().getResource("img/three.png")));
         }
-        else if(currentLifes == 2){
+        else if(currentLives == 2){
             this.setIcon(new ImageIcon(getClass().getResource("img/two.png")));
         }
-        else if(currentLifes == 1){
+        else if(currentLives == 1){
             this.setIcon(new ImageIcon(getClass().getResource("img/one.png")));
         }
-        else if(currentLifes == 0){
+        else if(currentLives == 0){
             this.setIcon(null);            
             btnCopy.setVisible(true);
         }
