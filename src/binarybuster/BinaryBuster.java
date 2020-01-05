@@ -1,5 +1,9 @@
 package binarybuster;
 
+/** 
+ * Główna klasa projektu
+ * @author Dominika Wysocka
+ */
 public class BinaryBuster {
 
     public static void main(String[] args) {
